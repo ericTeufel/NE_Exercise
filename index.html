@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>轮播</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    i {
+        display: inline-block;
+    }
+
+    .container {
+        border: 1px solid #ccc;
+        width: 1616px;
+        height: 460px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .btn {
+        position: absolute;
+        top: 400px;
+        left: 800px;
+        z-index: 2;
+    }
+
+    .btn li {
+        float: left;
+        margin: 5px;
+        list-style: none;
+        z-index: 3;
+    }
+
+    .btn li i {
+        /*display: inline-block;*/
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+
+    .btn li i:hover {
+        background-color: #000;
+    }
+
+    .arrow {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        display: none;
+        cursor: pointer;
+        z-index: 10;
+                background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    #prev {
+        position: absolute;
+        top: 50%;
+        left: 50px;
+    }
+
+    #next {
+        position: absolute;
+        top: 50%;
+        right: 50px;
+    }
+
+    .container:hover .arrow {
+        display: inline-block;
+
+    }
+
+    .arrow:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="list">
+            <img src="img/banner1.jpg">
+            <img src="img/banner2.jpg">
+            <img src="img/banner3.jpg">
+
+        </div>
+        <div class="btn" id="btn">
+            <ul>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+            </ul>
+        </div>
+        <i id="prev" class="arrow">&lt;</i>
+        <i id="next" class="arrow">&gt;</i>
+    </div>
+    <script type="text/javascript">
+        (function(){
+            var CURRENT  = 0;
+            var DURATION = 1000;
+            var img = document.getElementById('list').children;
+            var imgLen = img.length;
+            // console.log(imgLen);
+
+            var time = setInterval(function(){
+                if (CURRENT < imgLen -1) {
+                    CURRENT ++;
+                }else {
+                    CURRENT = 0;
+                }
+                change(CURRENT);
+            },DURATION);
+
+            function change(n){
+                    // console.log(n);
+            }
+
+            function eve (){
+
+            }
+
+
+        })()
+
+
+    </script>
+</body>
+
+</html>
