@@ -108,7 +108,33 @@ a,a:hover{color:#ccc;}
 }
 /*轮播图*/
 .banner{
-  padding: 0;
+    position: relative;
+    cursor: pointer;
+}
+.banner .imgWrap div{
+    display: none;
+}
+.banner .imgWrap .imgOn{
+    display: block;
+}
+.banner .b-btn{
+    position: absolute;
+    top: 400px;
+    left: 800px;
+    z-index: 2;
+}
+.banner .b-btn li{
+    float: left;
+    margin: 5px;
+    list-style: none;
+    z-index: 3;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.banner .b-btn ul .btnOn{
+    background-color: #000;
 }
 /*相关平台介绍*/
 .container{
@@ -224,7 +250,7 @@ a,a:hover{color:#ccc;}
 }
 .content .course .cell .img{
   display: block;
-    height: 125px; 
+    height: 125px;
     /*width: 100%;*/
     overflow: hidden;
   text-align: center;

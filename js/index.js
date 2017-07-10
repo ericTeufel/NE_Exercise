@@ -83,6 +83,95 @@ document.getElementById('login_close').addEventListener('click', function(event)
         });
 })();
 
+//轮播
+(function(){
+    var CURRENT = 0;
+    var DURATION = 5000;
+    var imgWrap = document.getElementById('imgWrap');
+    var img = imgWrap.children;
+    var imgLen = img.length;
+
+
+    var btnWrap = document.getElementById('b-btn');
+    var btn = btnWrap.getElementsByTagName('ul')[0].children;
+    var opa = function(ele,lev){
+        if (ele.filters) {
+            ele.style.filters = 'alpha(opacity=' + lev + ')';
+        }else {
+            ele.style.opacity = lev/100;
+        }
+    }
+    var fadeIn = function(ele){
+        opa(ele,0);
+        for (var i = 0; i < 21; i++) {
+            (function(){
+                var lev = i*5;
+                setTimeout(function(){
+                    opa(ele,lev);
+                },i*40)
+            })(i);
+        }
+    }
+
+    var fadeOut = function(ele){
+        for (var i = 0; i < 21; i++) {
+            (function(){
+                var lev = 100 - i * 5;
+                setTimeout(function(){
+                    opa(ele,lev);
+                },i*40);
+            })(i);
+        }
+    }
+
+    var time = setInterval(function() {
+        if (CURRENT < imgLen - 1) {
+            CURRENT++;
+        } else {
+            CURRENT = 0;
+        }
+        change(CURRENT);
+    }, DURATION);
+
+    function change(n) {
+        fadeOut(imgWrap.getElementsByClassName('imgOn')[0]);
+        imgWrap.getElementsByClassName('imgOn')[0].classList.remove('imgOn');
+        img[n].classList.add('imgOn');
+        fadeIn(img[n]);
+
+        btnWrap.getElementsByTagName('ul')[0].getElementsByClassName('btnOn')[0].classList.remove('btnOn');
+        btn[n].classList.add('btnOn');
+    }
+
+    function eve() {
+        for (var i = 0; i < imgLen; i++) {
+            (function(_i){
+                img[_i].addEventListener('mouseover',function(e){
+                    clearTimeout(time);
+                    CURRENT = _i;
+                });
+
+                img[_i].addEventListener('mouseout',function(e){
+                     time = setInterval(function() {
+                        if (CURRENT < imgLen - 1) {
+                            CURRENT++;
+                        } else {
+                            CURRENT = 0;
+                        }
+                        change(CURRENT);
+                    }, DURATION);
+                });
+
+                btn[_i].addEventListener('click',function(e){
+                    clearTimeout(time);
+                    change(_i);
+                    CURRENT = _i;
+                });
+            })(i);
+        }
+    }
+    eve();
+})();
 
 var uName = document.getElementById('name-err');
 // // 绑定登录事件
@@ -118,7 +207,13 @@ function _login() {
 
 // 获取课程
 (function() {
+    //初始
     getClass(1, 20, 10);
+
+    
+
+
+
 })();
 
 
@@ -148,27 +243,8 @@ for (var i = 0, len = lis.length; i < len; i++) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // hotClass();
-// var hotClass = function(){} 
+// var hotClass = function(){}
 function hotClass() {
     ajax({
         url: "http://study.163.com/webDev/hotcouresByCategory.htm", //请求地址
