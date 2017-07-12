@@ -19,7 +19,7 @@ h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:normal;}
 del,ins,u,s,a,a:hover{text-decoration:none;}
 body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;color:#333;outline:0;}
 body{background:#fff;}
-a,a:hover{color:#ccc;}
+a,a:hover{color:#000;}
 /*整体*/
 .wrap{
   width: 1652px;
@@ -172,6 +172,14 @@ a,a:hover{color:#ccc;}
   float: left;
   margin-right: 20px;
 }
+.m-img2 i{
+    background: url(../img/1.png) no-repeat;
+    background-position: -87px -70px;
+}
+.m-img3 i{
+    background: url(../img/1.png) no-repeat;
+    background-position: -173px -70px;
+}
 .mooc span{
   margin-top: 34px;
   display: block;
@@ -209,7 +217,8 @@ a,a:hover{color:#ccc;}
   margin-top: 81px;
   overflow: hidden;
   display: inline-block;
-  box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
+          box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
 }
 .content .con-title li{
   height: 50px;
@@ -245,7 +254,8 @@ a,a:hover{color:#ccc;}
   width:223px;
   height: 228px;
   background-color: #fff;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
   font: 12px/1.4 '微软雅黑';
 }
 .content .course .cell .img{
@@ -308,6 +318,62 @@ a,a:hover{color:#ccc;}
     margin-right: 20px;
     margin-bottom: 20px;
   }
+  /*cellhover*/
+  #course .cellhover{
+    width: 480px;
+    height: 238px;
+    z-index: 50;
+    position: relative;
+  }
+  #course .cellhover h3{
+      position: absolute;
+      top: 15px;
+      left: 250px;
+      font-size: 18px;
+      line-height: 1.11;
+      letter-spacing: 0.9px;
+      color: #333333;
+  }
+  #course .cellhover .c-fans{
+      position: absolute;
+      top: 55px;
+      left: 254px;
+      font-family: MicrosoftYaHei;
+      font-size: 14px;
+      line-height: 1.71;
+      letter-spacing: 0.7px;
+      color: #666;
+  }
+  #course .cellhover .c-publisher{
+      position: absolute;
+      top: 78px;
+      left: 254px;
+      font-family: MicrosoftYaHei;
+      font-size: 14px;
+      line-height: 1.71;
+      letter-spacing: 0.7px;
+      color: #666;
+  }
+  #course .cellhover .c-type{
+      position: absolute;
+      top: 102px;
+      left: 254px;
+      font-family: MicrosoftYaHei;
+      font-size: 14px;
+      line-height: 1.71;
+      letter-spacing: 0.7px;
+      color: #666;
+  }
+  #course .cellhover .c-intro{
+      position: absolute;
+      left: 21px;
+      top: 177px;
+      font-family: MicrosoftYaHei;
+  	font-size: 14px;
+  	line-height: 1.71;
+  	letter-spacing: 0.7px;
+  	color: #666;
+  }
   /*content 侧边栏*/
   .content .aside{
     width: 225px;
@@ -336,7 +402,8 @@ a,a:hover{color:#ccc;}
     background-color: #fff;
     border: 1px solid rgb(238,238,238);
     border-top: none;
-    box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
+    -webkit-box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
+            box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
   }
   .content .aside span{
     position: absolute;
@@ -349,6 +416,7 @@ a,a:hover{color:#ccc;}
     position: absolute;
     top: 100px;
     left: 21px;
+    cursor: pointer;
   }
   /*content 热门课程*/
   .content .aside .hot{
@@ -360,8 +428,9 @@ a,a:hover{color:#ccc;}
     border: 1px solid rgb(238,238,238);
     border-right: 1px solid rgb(238,238,238);
     border-top: none;
-    box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
-    overflow: hidden;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
+            box-shadow: 0 1px 1px 0 rgba(6, 0, 1, 0.2);
+    /*overflow: hidden;*/
   }
   .content .aside .hot .hot-content{
     margin-top: 76px;
@@ -505,7 +574,7 @@ a,a:hover{color:#ccc;}
       display: none;
     }
     /*login*/
-    .login{
+    .msk{
       z-index: 999;
       width: 100%;
       height: 100%;
@@ -514,72 +583,98 @@ a,a:hover{color:#ccc;}
       position: fixed;
       top: 0;
       left: 0;
-      margin: 0;
+      /*margin: 0;*/
     }
-    .login_form{
-      position: absolute;
-      border: 1px solid #ccc;
-      width: 325px;
-      height: 325px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      background-color: #ccc;
-      background: rgba(255,255,255,1);
-      border: none;
+    .login{
+        font-size: 16px;
     }
-    .login_form legend{
-      height: 50px;
-      width: 295px;
-      background-color: rgb(33,165,87);
-      line-height: 50px;
-      text-align: center;
-      padding-left: 30px;
-      color: #000;
-      font: 22px/50px '微软雅黑';
+    .login .login-box{
+        width: 387px;
+        height: 288px;
+        background-color: #FFF;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
     }
-    .login_form span{
-      float: right;
-      margin-right: 15px;
-      vertical-align: middle;
+    .login .l-loginForm{
+        margin:68px 52px 115px 40px;
+        /*padding: 15px;*/
     }
-    .login_form .name{
-      position: absolute;
-      top :110px;
-      left: 60px;
+    .login .l-loginForm .l-input{
+        width: 295px;
+        height: 45px;
+        background-color: #fafafa;
+        box-shadow: inset 2.8px 2.8px 0 0 #f1f1f1;
+        border: solid 1px #dfdfdf;
+        margin-bottom: 15px;
     }
-    .login_form  .pwd{
-      position: absolute;
-      top: 160px;
-      left: 60px;
+    .login .l-title h3{
+        width: 129px;
+    	height: 18px;
+    	font-family: MicrosoftYaHei;
+    	font-size: 18px;
+    	line-height: 1.56;
+    	color: #444444;
+        position: absolute;
+        top: 20px;
+        right: 219px;
     }
-    .login_form button{
-      position: absolute;
-      top: 220px;
-      left: 120px;
-      width: 90px;
-      height: 40px;
-      font-size: 16px;
-      background-color: #39a030;
-      color: #fff;
-      border: none;
+    .login .l-title i{
+        position: absolute;
+        right: 8px;
+        top: 5px;
+        cursor: pointer;
     }
-    /*login验证*/
-    .err{
-      color: #f00;
-    }
-    .name_err{
-      position: absolute;
-      top: 135px;
-      left: 130px;
-    }
-    .pwd_err{
-      position: absolute;
-      top: 185px;
-      left: 130px;
+    .login .l-loginForm button{
+        width: 293px;
+        height: 46px;
+        background-color: #1aa43a;
+        box-shadow: 1.9px 2.3px 0 0 rgba(7, 91, 36, 0.17);
+        border: none;
+        color: #fff;
+        font-family: MicrosoftYaHei;
+        font-size: 16px;
+        letter-spacing: 3.2px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.46);
     }
 
-    .disabled{
-      cursor: default;
-      background-color: #ddd;
+    /*video*/
+
+    .video-box{
+        width: 950px;
+        height: 676px;
+        background-color: #ffffff;
+        background-color: #FFF;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .v-title h3{
+        width: 148px;
+        height: 18px;
+        font-family: MicrosoftYaHei;
+        font-size: 18px;
+        line-height: 1.56;
+        color: #444444;
+        position: absolute;
+        top: 29px;
+        left: 30px;
+    }
+    .v-title i{
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .v-video{
+        position: absolute;
+        top: 69px;
+        left: 31px;
+        width: 889px;
+        height: 538px;
+        background-color: #ffffff;
     }

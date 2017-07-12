@@ -51,7 +51,7 @@ function ajax(options) {
                 options.success && options.success(xhr.responseText, xhr.responseXML);
             } else {
                 options.fail && options.fail(status);
-                alert(status);
+                // alert(status);
             }
         }
     }
@@ -74,49 +74,4 @@ function formatParams(data) {
     }
     arr.push(("v=" + Math.random()).replace(".", ""));
     return arr.join("&");
-}
-
-
-
-// ajax({
-//         url: "./TestXHR.aspx",              //请求地址
-//         type: "POST",                       //请求方式
-//         data: { name: "super", age: 20 },        //请求参数
-//         dataType: "json",
-//         success: function (response, xml) {
-//             // 此处放成功后执行的代码
-//           },
-//           fail: function (status) {
-//             // 此处放失败后执行的代码
-//           }
-//         });
-
-
-
-function get (url,options,callback) {
-  var xhr = window.XMLHttpRequest ? new XMLHttpRequest(): new ActiveObject("Microsoft.XMLHTTP");
-  xhr.onreadystatechange = function  (callback) {
-    if (xhr.readyState == 4) {
-      if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-        callback(xhr.responseText);
-      }else {
-        alert('request was unsuccessful:' + xhr.status)
-      }
-    }
-  }
-  xhr.open('get',url+'?'+serialize(options),true);
-  xhr.send(null);
-}
-function serialize(data){
-  if (!data) {return ''};
-  var pairs = [];
-  for (var name in data) {
-    if (!data.hasOwnProperty(name)) {continue;}
-    if (typeof data[name] === 'function') {continue;}
-    var value = data[name].toString();
-    name = encodeURIComponent(name);
-    value = encodeURIComponent(value);
-    pairs.push(name + '=' + value);
-  }
-  return pairs.join('&');
 }
